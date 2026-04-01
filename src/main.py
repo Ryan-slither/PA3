@@ -1,0 +1,41 @@
+def hvlcs(a: str, b: str, v: dict[str, int]) -> int:
+    M = []
+    for i in range(len(a) + 1):
+        b_row = []
+        for j in range(len(b) + 1):
+            if i == 0 or j == 0:
+                b_row.append(0)
+            else:
+                b_row.append(-1)
+
+        M.append(b_row)
+
+    S = ""
+
+    def OPT(i: int, j: int):
+        if i == 0 or j == 0:
+            return 0
+
+        if M[i][j] == -1:
+            if a[i - 1] != b[j - 1]:
+                M[i][j] = max(OPT(i - 1, j), OPT(i, j - 1))
+            else:
+                M[i][j] = v[a[i - 1]] + OPT(i - 1, j - 1)
+
+        return M[i][j]
+
+    val = OPT(len(a), len(b))
+    print(M)
+    return val
+
+
+if __name__ == "__main__":
+    a1 = "aacb"
+    b1 = "caab"
+    v1 = {"a": 2, "b": 4, "c": 5}
+    print(hvlcs(a1, b1, v1))
+
+    a2 = "aabcd"
+    b2 = "daacb"
+    v2 = {"a": 2, "b": 3, "c": 5, "d": 7}
+    print(hvlcs(a2, b2, v2))
