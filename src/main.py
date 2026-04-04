@@ -30,7 +30,6 @@ def hvlcs(a: str, b: str, v: dict[str, int]) -> tuple[str, int]:
         return M[i][j]
 
     val = OPT(len(a), len(b))
-    print_solution(M)
 
     def FindSol(i: int, j: int):
         nonlocal S
@@ -52,12 +51,14 @@ def hvlcs(a: str, b: str, v: dict[str, int]) -> tuple[str, int]:
 
 
 if __name__ == "__main__":
-    a1 = "aacb"
-    b1 = "caab"
-    v1 = {"a": 2, "b": 4, "c": 5}
-    print(hvlcs(a1, b1, v1))
+    import sys
+    from io_handler import parse_input, write_output
 
-    a2 = "aabcd"
-    b2 = "daacb"
-    v2 = {"a": 2, "b": 3, "c": 5, "d": 7}
-    print(hvlcs(a2, b2, v2))
+    if len(sys.argv) == 2:
+        with open(sys.argv[1]) as f:
+            a, b, values = parse_input(f)
+    else:
+        a, b, values = parse_input()
+
+    subseq, val = hvlcs(a, b, values)
+    write_output(val, subseq)
