@@ -1,5 +1,12 @@
-def hvlcs(a: str, b: str, v: dict[str, int]) -> int:
+def print_solution(M: list[list[int]]):
+    for lst in M:
+        print(lst)
+
+
+def hvlcs(a: str, b: str, v: dict[str, int]) -> tuple[str, int]:
     M = []
+    S: str = ""
+
     for i in range(len(a) + 1):
         b_row = []
         for j in range(len(b) + 1):
@@ -10,9 +17,7 @@ def hvlcs(a: str, b: str, v: dict[str, int]) -> int:
 
         M.append(b_row)
 
-    S = ""
-
-    def OPT(i: int, j: int):
+    def OPT(i: int, j: int) -> int:
         if i == 0 or j == 0:
             return 0
 
@@ -25,8 +30,25 @@ def hvlcs(a: str, b: str, v: dict[str, int]) -> int:
         return M[i][j]
 
     val = OPT(len(a), len(b))
-    print(M)
-    return val
+    print_solution(M)
+
+    def FindSol(i: int, j: int):
+        nonlocal S
+        if i == 0 or j == 0:
+            return
+
+        if a[i - 1] != b[j - 1]:
+            if M[i - 1][j] >= M[i][j - 1]:
+                FindSol(i - 1, j)
+            else:
+                FindSol(i, j - 1)
+        else:
+            S += a[i - 1]
+            FindSol(i - 1, j - 1)
+
+    FindSol(len(a), len(b))
+
+    return (S[::-1], val)
 
 
 if __name__ == "__main__":
