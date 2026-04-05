@@ -12,29 +12,29 @@ To set up the repo:
 
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install pytest`
+- `pip install -r requirements.txt`
 
 To run the program with an input file:
 
 ```
-python3 src/main.py data/test1.in
-```
-
-To run via stdin:
-
-```
-python3 src/main.py < data/test1.in
+python src/main.py data/test1.in
 ```
 
 To run all tests:
 
 ```
-python3 tests/test_hvlcs.py
+python tests/test_hvlcs.py
+```
+
+To run graph:
+
+```
+python src/graph.py
 ```
 
 ## Note for macOS users
 
-If `python3` is not found, try `python`. Starting with macOS Monterey 12.3, Apple removed the pre-installed Python 2.7 and the `python` command may not be linked to `python3` automatically.
+If `python` is not found, try `python3`. Starting with macOS Monterey 12.3, Apple removed the pre-installed Python 2.7 and the `python` command may not be linked to `python3` automatically.
 
 ## Input Format
 
