@@ -1,6 +1,6 @@
 # Highest Value Longest Common Sequence
 
-Ryan Froug (83197825) | Yoan Esposito (24603154)
+Ryan Froug (83197825) | Yoan Exposito (24603154)
 
 ## Programming Assignment 3
 
