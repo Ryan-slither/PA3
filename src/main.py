@@ -52,6 +52,7 @@ def hvlcs(a: str, b: str, v: dict[str, int]) -> tuple[str, int]:
 
 if __name__ == "__main__":
     import sys
+
     from io_handler import parse_input, write_output
 
     if len(sys.argv) == 2:
